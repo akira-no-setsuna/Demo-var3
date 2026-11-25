@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="246b7668b3a34dd9a15fb77602c9ce50" Name="Diagram1">
+        <EntityTypeShape EntityType="BuildMaterialsModel.Address" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.Category" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.Manufacturer" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.Order" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.OrderItem" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.OrderLinks" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.Product" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.ProductLinks" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.Role" Width="1.5" PointX="0.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.User" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuildMaterialsModel.UserRole" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <AssociationConnector Association="BuildMaterialsModel.FK_OrderLinks_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK__ProductLi__Categ__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK__ProductLi__Manuf__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK_OrderItem_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK_OrderLinks_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK_OrderItem_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK_OrderLinks_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK_ProductLinks_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK__UserRole__RoleId__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="BuildMaterialsModel.FK_UserRole_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
