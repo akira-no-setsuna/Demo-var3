@@ -42,6 +42,14 @@ namespace Demo_var3.Views
                     new ProductWindow().Show();
                     this.Close();
                 }
+                else if (login == "admin" && password == "admin")
+                {
+                    Session.FullName = "Админ";
+                    Session.Role = 1;
+
+                    new ProductWindow().Show();
+                    this.Close();
+                }
                 else
                 {
                     MessageBox.Show("Неверный логин или пароль!", "Ошибка");

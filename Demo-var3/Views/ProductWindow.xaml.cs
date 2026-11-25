@@ -18,15 +18,74 @@ namespace Demo_var3.Views
         {
             InitializeComponent();
             LoadProducts();
+            FillComboBox();
 
             FullNameLabel.Content = Session.FullName;
+            ToolsPanel.Visibility = Session.isStaff ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void FillComboBox()
+        {
+            using (var db = new BuildMaterialsEntities())
+            {
+                var query = db.Manufacturer
+                .Select(t => t.Name) .ToList();
+
+                foreach (var item in query)
+                {
+                    FiltrationCb.Items.Add(item);
+                }
+            }
         }
 
         private void LoadProducts()
         {
             using(var db = new BuildMaterialsEntities())
             {
-                var query = db.Product
+
+                string search = SearchTb.Text.ToLower();
+
+                var query = string.IsNullOrEmpty(search) ?
+                    db.Product :
+                    db.Product.Where(t =>
+                        t.Article.ToLower().Contains(search)||
+                        t.Name.ToLower().Contains(search) ||
+                        t.Description.ToLower().Contains(search) ||
+                        t.ProductLinks.Category.Name.ToLower().Contains(search) ||
+                        t.ProductLinks.Manufacturer.Name.ToLower().Contains(search)
+                    );
+
+                switch (SortCb.SelectedIndex)
+                {
+                    case 0:
+                        query = query.OrderBy(t => t.Name);
+                        break;
+                    case 1:
+                        query = query.OrderBy(t => t.Cost);
+                        break;
+                    case 2:
+                        query = query.OrderBy(t => t.Quantity);
+                        break;
+                    case 3:
+                        query = query.OrderBy(t => t.Sale);
+                        break;
+                    case 4:
+                        query = query.OrderByDescending(t => t.Cost);
+                        break;
+                    case 5:
+                        query = query.OrderByDescending(t => t.Quantity);
+                        break;
+                    case 6:
+                        query = query.OrderByDescending(t => t.Sale);
+                        break;
+                    default:
+                        break;
+                }
+
+                if (FiltrationCb.SelectedIndex != 0)
+                    query = query.Where(t => t.ProductLinks.Manufacturer.Name.ToLower().Contains((string)FiltrationCb.SelectedValue));
+
+                var view = query
                 .Select(t => new ProductDTO
                 {
                     Article = t.Article ?? "Отсутствует",
@@ -41,7 +100,7 @@ namespace Demo_var3.Views
                 })
                 .ToList();
 
-                CardsContainer.ItemsSource = query;
+                CardsContainer.ItemsSource = view;
             }
         }
 
@@ -49,6 +108,30 @@ namespace Demo_var3.Views
         {
             new Login().Show();
             this.Close();
+        }
+
+        private void SearchTb_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            LoadProducts();
+        }
+
+        private void SortCb_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if(CardsContainer != null)
+                LoadProducts();
+        }
+
+        private void FiltrationCb_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (CardsContainer != null)
+                LoadProducts();
+        }
+
+        private void CardsContainer_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (Session.isAdmin)
+                if ( new EditWindow().ShowDialog() == true ) LoadProducts();
+                
         }
     }
 }

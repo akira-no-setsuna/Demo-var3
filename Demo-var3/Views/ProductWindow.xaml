@@ -13,7 +13,27 @@
             <Label x:Name="FullNameLabel"/>
         </DockPanel>
 
-        <ListView x:Name="CardsContainer" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Background="{StaticResource SecondBg}" x:Name="ToolsPanel" Height="20" VerticalAlignment="Top" FlowDirection="LeftToRight" Orientation="Horizontal">
+            <TextBox x:Name="SearchTb" TextChanged="SearchTb_TextChanged" Width="200" Margin="10 0 0 0"/>
+            <ComboBox x:Name="SortCb" SelectionChanged="SortCb_SelectionChanged" Width="200" Margin="10 0 0 0" SelectedIndex="0">
+                <ComboBoxItem Content="Без сортировки"/>
+                <ComboBoxItem Content="По возрастанию цены"/>
+                <ComboBoxItem Content="По возрастанию количества"/>
+                <ComboBoxItem Content="По возрастанию скидки"/>
+                <ComboBoxItem Content="По убыванию цены"/>
+                <ComboBoxItem Content="По убыванию количества"/>
+                <ComboBoxItem Content="По убыванию скидки"/>
+            </ComboBox>
+            <ComboBox x:Name="FiltrationCb" SelectionChanged="FiltrationCb_SelectionChanged" Width="200" Margin="10 0 0 0" SelectedIndex="0">
+                <ComboBoxItem Content="Все производители"/>
+            </ComboBox>
+
+        </StackPanel>
+
+        <ListView x:Name="CardsContainer" 
+        HorizontalContentAlignment="Stretch" 
+        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+        MouseLeftButtonDown="CardsContainer_MouseLeftButtonDown">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <local:ProductCard/>
