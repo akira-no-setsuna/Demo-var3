@@ -40,7 +40,7 @@
             <TextBlock TextWrapping="Wrap" Text="{Binding Quantity, StringFormat='Количество на складе: {0}'}"/>
         </StackPanel>
 
-        <TextBlock TextWrapping="Wrap" Grid.Column="2" Text="{Binding Sale, StringFormat='Действубщая скидка/n -{0}%'}" Grid.RowSpan="2"/>
+        <TextBlock TextWrapping="Wrap" Grid.Column="2" Text="{Binding Sale, StringFormat='Действующая скидка -{0}%'}" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
     </Grid>
 </UserControl>

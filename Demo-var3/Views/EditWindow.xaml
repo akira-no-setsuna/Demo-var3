@@ -16,7 +16,7 @@
         <TextBox x:Name="NameTb"/>
 
         <Label Content="Категория"/>
-        <ComboBox x:Name="CategoryCb"/>
+        <ComboBox x:Name="CategoryCb" SelectedValuePath="Id" DisplayMemberPath="Name"/>
 
         <Label Content="Описание"/>
         <TextBox x:Name="DescriptionTb"/>
@@ -27,6 +27,9 @@
         <Label Content="Цена"/>
         <TextBox x:Name="CostTb" />
 
+        <Label Content="Скидка"/>
+        <TextBox x:Name="SaleTb" />
+
         <Label Content="Единица измерения"/>
         <TextBox Text="Шт." Background="#808080"/>
 
@@ -34,10 +37,10 @@
         <TextBox x:Name="QuantityTb"/>
 
         <Image x:Name="ProductImg" Width="100" Height="100"/>
-        <Button Content="Изменить Изображение" Width="200" />
+        <Button Content="Изменить Изображение" Width="200" Click="SelectImgButton_Click" />
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Сохранить"/>
+            <Button Content="Сохранить" Click="SaveButton_Click"/>
             <Button Content="Отменить"/>
         </StackPanel>
     </StackPanel>

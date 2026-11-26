@@ -6,14 +6,21 @@
         xmlns:local="clr-namespace:Demo_var3.Views"
         mc:Ignorable="d"
         Title="ProductWindow" Height="450" Width="800"
+        MinHeight="450" MinWidth="800"
         Style="{StaticResource BaseWindow}">
-    <StackPanel>
-        <DockPanel Background="{StaticResource SecondBg}" Height="30" VerticalAlignment="Top" FlowDirection="RightToLeft">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Background="{StaticResource SecondBg}" Grid.Row="0" VerticalAlignment="Top" FlowDirection="RightToLeft">
             <Button Content="Выход" Click="ExitButton_Click"/>
             <Label x:Name="FullNameLabel"/>
         </DockPanel>
 
-        <StackPanel Background="{StaticResource SecondBg}" x:Name="ToolsPanel" Height="20" VerticalAlignment="Top" FlowDirection="LeftToRight" Orientation="Horizontal">
+        <StackPanel Background="{StaticResource SecondBg}"  Grid.Row="1" x:Name="ToolsPanel" Height="20" VerticalAlignment="Top" FlowDirection="LeftToRight" Orientation="Horizontal">
             <TextBox x:Name="SearchTb" TextChanged="SearchTb_TextChanged" Width="200" Margin="10 0 0 0"/>
             <ComboBox x:Name="SortCb" SelectionChanged="SortCb_SelectionChanged" Width="200" Margin="10 0 0 0" SelectedIndex="0">
                 <ComboBoxItem Content="Без сортировки"/>
@@ -30,10 +37,10 @@
 
         </StackPanel>
 
-        <ListView x:Name="CardsContainer" 
+        <ListView x:Name="CardsContainer"  Grid.Row="2"
         HorizontalContentAlignment="Stretch" 
         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-        MouseLeftButtonDown="CardsContainer_MouseLeftButtonDown">
+        PreviewMouseLeftButtonDown="CardsContainer_MouseLeftButtonDown">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <local:ProductCard/>
@@ -41,5 +48,5 @@
             </ItemsControl.ItemTemplate>
         </ListView>
 
-    </StackPanel>
+    </Grid>
 </Window>

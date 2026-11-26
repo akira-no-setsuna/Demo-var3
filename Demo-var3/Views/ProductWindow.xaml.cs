@@ -30,11 +30,9 @@ namespace Demo_var3.Views
             {
                 var query = db.Manufacturer
                 .Select(t => t.Name) .ToList();
-
+                
                 foreach (var item in query)
-                {
                     FiltrationCb.Items.Add(item);
-                }
             }
         }
 
@@ -129,8 +127,13 @@ namespace Demo_var3.Views
 
         private void CardsContainer_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (Session.isAdmin)
-                if ( new EditWindow().ShowDialog() == true ) LoadProducts();
+            using (var db = new BuildMaterialsEntities())
+            {
+              
+                if (Session.isAdmin &&
+                    CardsContainer.SelectedItem is ProductDTO p)
+                    if (new EditWindow(p.Article).ShowDialog() == true ) LoadProducts();
+            }
                 
         }
     }

@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo_var3.Views"
         mc:Ignorable="d"
-        Title="Вход" Height="220" Width="200"
+        Title="Вход"
+        Height="220" Width="200"
+        MinHeight="220" MinWidth="200"
         Style="{StaticResource BaseWindow}">
 
     <StackPanel Margin="10,10,10,0" Height="264" VerticalAlignment="Top">
