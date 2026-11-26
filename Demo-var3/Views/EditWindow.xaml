@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo_var3.Views"
         mc:Ignorable="d"
-        Title="EditWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="EditWindow" Height="auto" Width="400">
+    <StackPanel Margin="10">
+
+        <Label Content="Артикул"/>
+        <TextBox x:Name="ArticleTb"/>
+
+
+        <Label Content="Наименование"/>
+        <TextBox x:Name="NameTb"/>
+
+        <Label Content="Категория"/>
+        <ComboBox x:Name="CategoryCb"/>
+
+        <Label Content="Описание"/>
+        <TextBox x:Name="DescriptionTb"/>
+
+        <Label Content="Производитель"/>
+        <ComboBox x:Name="ManufacturerCb"/>
+
+        <Label Content="Цена"/>
+        <TextBox x:Name="CostTb" />
+
+        <Label Content="Единица измерения"/>
+        <TextBox Text="Шт." Background="#808080"/>
+
+        <Label Content="Количество"/>
+        <TextBox x:Name="QuantityTb"/>
+
+        <Image x:Name="ProductImg" Width="100" Height="100"/>
+        <Button Content="Изменить Изображение" Width="200" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Сохранить"/>
+            <Button Content="Отменить"/>
+        </StackPanel>
+    </StackPanel>
 </Window>
