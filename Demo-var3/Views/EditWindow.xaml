@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo_var3.Views"
         mc:Ignorable="d"
-        Title="EditWindow" Height="auto" Width="400">
+        Title="EditWindow" Height="700" Width="400"
+        MinHeight="700" MinWidth="400">
     <StackPanel Margin="10">
 
         <Label Content="Артикул"/>
@@ -22,7 +23,7 @@
         <TextBox x:Name="DescriptionTb"/>
 
         <Label Content="Производитель"/>
-        <ComboBox x:Name="ManufacturerCb"/>
+        <ComboBox x:Name="ManufacturerCb" SelectedValuePath="Id" DisplayMemberPath="Name"/>
 
         <Label Content="Цена"/>
         <TextBox x:Name="CostTb" />

@@ -38,7 +38,7 @@ namespace Demo_var3.Views
 
         private void LoadProducts()
         {
-            using(var db = new BuildMaterialsEntities())
+            using ( var db = new BuildMaterialsEntities())
             {
 
                 string search = SearchTb.Text.ToLower();
@@ -94,7 +94,7 @@ namespace Demo_var3.Views
                     Cost = (int)t.Cost,
                     Sale = (int)t.Sale,
                     Quantity = (int)t.Quantity,
-                    Photo = t.Photo ?? "Отсутствует",
+                    Photo = t.Photo,
                 })
                 .ToList();
 
@@ -125,16 +125,72 @@ namespace Demo_var3.Views
                 LoadProducts();
         }
 
-        private void CardsContainer_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void CardsContainer_DoubleMouseClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            using (var db = new BuildMaterialsEntities())
+            try
             {
-              
-                if (Session.isAdmin &&
-                    CardsContainer.SelectedItem is ProductDTO p)
-                    if (new EditWindow(p.Article).ShowDialog() == true ) LoadProducts();
+                using (var db = new BuildMaterialsEntities())
+                {
+
+                    if (Session.isAdmin &&
+                        CardsContainer.SelectedItem is ProductDTO p)
+                        if (new EditWindow(p.Article).ShowDialog() == true) LoadProducts();
+                }
             }
+            catch
+            {
+                MessageBox.Show("Ошибка соединения с БД!", "Ошибка");
+            }
+           
                 
+        }
+
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (new EditWindow(null).ShowDialog() == true) LoadProducts();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(CardsContainer.SelectedItem is ProductDTO p))
+            {
+                MessageBox.Show("Выберите товар!", "Ошибка");
+                return;
+            }
+
+
+            if ( MessageBox.Show($"Удалить товар {p.Name}?", "Подтверждение", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+                return;
+
+            try
+            {
+                using (var db = new BuildMaterialsEntities())
+                {
+                    var product = db.Product.FirstOrDefault(t => t.Article == p.Article);
+
+                    if (product == null)
+                    {
+                        MessageBox.Show("Товар не найден!", "Ошибка");
+                        return;
+                    }
+
+                    if (db.OrderItem.Any(i => i.Article == p.Article))
+                    {
+                        MessageBox.Show("Нельзя удалить товар, что присутсвует в заказе!", "Ошибка");
+                        return;
+                    }
+
+                    product.Photo.Delete();
+                    db.Product.Remove(product);
+
+                    db.SaveChanges();
+                    LoadProducts();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка соединения с БД!", "Ошибка");
+            }
         }
     }
 }

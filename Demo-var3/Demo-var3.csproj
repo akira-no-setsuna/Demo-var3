@@ -324,42 +324,20 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\2G3280.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\3L7RCZ.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\3XBOTN.jpeg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\BPV4MM.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\F895RB.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\2G3280.jpg" />
+    <None Include="Resources\3L7RCZ.jpg" />
+    <None Include="Resources\3XBOTN.jpeg" />
+    <None Include="Resources\BPV4MM.jpg" />
+    <None Include="Resources\F895RB.jpg" />
     <Resource Include="Resources\icon.ico" />
     <Resource Include="Resources\icon.jpg" />
     <Resource Include="Resources\icon.png" />
-    <None Include="Resources\JVL42J.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\MIO8YV.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\picture.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\PMEZMH.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\S72AM3.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\UER2QD.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\JVL42J.jpg" />
+    <None Include="Resources\MIO8YV.jpg" />
+    <None Include="Resources\picture.png" />
+    <None Include="Resources\PMEZMH.jpg" />
+    <None Include="Resources\S72AM3.jpg" />
+    <None Include="Resources\UER2QD.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

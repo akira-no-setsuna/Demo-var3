@@ -147,13 +147,17 @@ namespace Demo_var3.Views
 
             try
             {
-                if (_isNew) _db.Product.Add(_product);
+                if (_isNew)
+                {
+                    _product = new Product();
+                    _db.Product.Add(_product);
+                }
 
                 _product.Article = ArticleTb.Text;
                 _product.Name = NameTb.Text;
-                _product.ProductLinks.CategoryId = CategoryCb.SelectedIndex;
+                _product.ProductLinks.CategoryId = (int?)CategoryCb.SelectedValue;
                 _product.Description = DescriptionTb.Text;
-                _product.ProductLinks.ManufacturerId = ManufacturerCb.SelectedIndex;
+                _product.ProductLinks.ManufacturerId = (int?)ManufacturerCb.SelectedValue;
                 _product.Cost = cost;
                 _product.Sale = sale;
                 _product.Quantity = quantity;
@@ -167,6 +171,7 @@ namespace Demo_var3.Views
 
                 DialogResult = true;
             }
+
             catch (Exception)
             {
                 MessageBox.Show("Ошибка соеденения с БД!", "Ошибка");
